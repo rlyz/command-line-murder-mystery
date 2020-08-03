@@ -1,0 +1,32 @@
+#Step 1
+cat Hint2
+grep "CLUE" crimescene
+#Tells us the suspect is a Male, at least 6' tall. He dropped a wallet with no ID, some loose change, membership cards for AAA, Delta SkyMiles, the local library and the Museum of Bash History. Witness is Annabel, blonde spiky hair with NZ accent.
+
+#Step 2 (Finding the Witness)
+cat people grep | Annabel
+#gives us 2 results:
+Annabel Sun F 26 Hart Place line 40
+Annabel Church F 38 Buckingham Place Line 179
+
+#Step 3 (Finding the street address)
+subl Buckingham_place (scrolls to line 179)
+subl Hart_place (scrolls to line 40)
+#reveals
+interview#699607
+The interview tells us that the suspect drives a blue Honda, with a license plate number that starts with L337 and ends with a 9.
+interview#47246024
+tells us Ms Sun is not the witness we are looking for.
+
+#Step 4 (Finding the vehicle car owner)
+grep -A 5 "L337" vehicles
+#gives us 4 suspects, Jeremy Bowers, Jacqui Maher, Joe Germuska, Erika Owens
+
+#Step 5 (Check their membership)
+cat AAA Delta_SkyMiles Museum_of_Bash_History Terminal_City_Library | grep "XXX"
+#we are left with 2 suspects that have memberships in all of clubs. Jeremy Bowers and Jacqui Maher.
+
+#Step 6
+Check their sex
+grep "xxx" people
+#Jacqui is a female which makes Jeremy the culprit
